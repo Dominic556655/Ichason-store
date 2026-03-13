@@ -456,9 +456,12 @@
             <br />
 
             <strong>Pages</strong><br /><br />
-            <a href="login">Home</a><br />
-            <a href="login">Shop</a><br />
-            <a href="login">About</a><br />
+            <a href="{% url 'login' %}"
+>Home</a><br />
+            <a href="{% url 'login' %}"
+>Shop</a><br />
+            <a href="{% url 'login' %}"
+>About</a><br />
             <a href="#">FAQs</a>
           </div>
 
@@ -478,19 +481,26 @@
           <div class="footer-utility">
             <h2>Utility</h2>
             <br />
-            <a href=""> Style Guide</a><br />
-            <a href="">Instruction</a><br />
-            <a href="">Licenses</a><br />
-            <a href="">Changelog</a>
+            <a href="{% url 'login' %}"
+> Style Guide</a><br />
+            <a href="{% url 'login' %}"
+>Instruction</a><br />
+            <a href="{% url 'login' %}"
+>Licenses</a><br />
+            <a href="{% url 'login' %}"
+>Changelog</a>
           </div>
 
           <div class="footer-coming">
             <h2>Coming Soon</h2>
             <br />
 
-            <a href="">Link in Bio</a><br />
-            <a href="">Password Protected</a><br />
-            <a href="">Error 404</a>
+            <a href="{% url 'login' %}"
+>Link in Bio</a><br />
+            <a href="{% url 'login' %}"
+>Password Protected</a><br />
+            <a href="{% url 'login' %}"
+>Error 404</a>
           </div>
         </div>
       </div>
@@ -513,3 +523,4 @@
     {% endif %}
   </body>
 </html>
+
