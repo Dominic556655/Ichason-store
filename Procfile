@@ -1,0 +1,1 @@
+web: gunicorn ICHASON_PROJ.wsgi --log-file -

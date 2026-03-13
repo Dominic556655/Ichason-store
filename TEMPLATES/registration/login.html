@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        <p class="item"><strong>Sign in</strong></p>
+      </h1>
+      <img class="register_img" src="/media/products/Adobe.png" alt="" />
+      <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+
+        <button class="button_class" type="submit">Login</button>
+      </form>
+
+      <p>
+        Don't have Ichason account?<a
+          class="button__class"
+          href="{% url 'register' %}"
+          ><strong>Sign up now</strong></a
+        >
+      </p>
+    </div>
+
+    <footer>
+      <p class="kick">
+        &copy; <time id="year"></time> ICHASON Store. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

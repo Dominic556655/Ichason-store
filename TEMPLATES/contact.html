@@ -1,0 +1,148 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICHASON SOCKS</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script src="{% static 'js/main.js' %}" defer></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header>
+      <article class="main_article">
+        <h2 class="h2">F.C.T Abuja</h2>
+        <address class="address">
+          <a href="https://maps.app.goo.gl/VmZZdJzbJLHQYM5H9">
+            No6 gaeron Crescent Dawaki</a
+          >
+        </address>
+        {% if user.is_authenticated %}
+        <h1 class="mine"><strong>Hello, {{ user.username }}</strong></h1>
+        {% endif %}
+
+        <img
+          class="img__1"
+          src="/media/products/Screenshot 2026-02-27 105049.png"
+          alt="favicon"
+          width="100"
+          height="100"
+        />
+
+        <section class="header-title-line">
+          <button class="menu-button"></button>
+          <div class="menu-icon"></div>
+        </section>
+      </article>
+      <nav>
+        <ul class="list">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'shop' %}">Shop</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+
+          <li>
+            <a>
+              <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button class="button_class" type="submit">Logout</button>
+              </form></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <main>
+      <div class="contact-container">
+        <h1 class="contact-page">Contact Us</h1>
+
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <li class="{{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class="grid">
+          <p class="grid-1">
+            <img src="/media/products/follow us icon.svg" alt="" /><br />
+            Follow us <br />
+            <a href="#"
+              ><img class="pop" src="/media/products/instagram-icon.svg" alt=""
+            /></a>
+            <a href="#"
+              ><img class="pop" src="/media/products/facebook-icon.svg" alt=""
+            /></a>
+            <a href="#"
+              ><img class="pop" src="/media/products/youtube-icon.svg" alt=""
+            /></a>
+          </p>
+          <p class="grid-2">
+            <img src="/media/products/Email icon.svg" alt="" /><br />
+            Email address: <br />
+            <a href="mailto:ichadominic5@gmail.com">ichadominic5@gmail.com</a>
+          </p>
+          <p class="grid-3">
+            <img src="/media/products/Phone number icon.svg" alt="" /><br />
+            Phone number <br /><a href="tel:+2348141590710"
+              >(+234)814 1590 710</a
+            >
+          </p>
+        </div>
+
+        <form method="POST">
+          {% csrf_token %}
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+          /><br />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+          /><br />
+          <input
+            type="text"
+            name="subject"
+            placeholder="Subject"
+            required
+          /><br />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            required
+          ></textarea
+          ><br />
+          <button class="submit" type="submit">
+            <strong>Send Message</strong>
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p class="kick">
+        &copy; <time id="year"></time> ICHASON Store. All rights reserved.
+      </p>
+    </footer>
+    {% else %}
+
+    <li><a href="{% url 'login' %}">Login</a></li>
+
+    <li>
+      <a href="{% url 'register' %}">Register</a>
+    </li>
+
+    {% endif %}
+  </body>
+</html>

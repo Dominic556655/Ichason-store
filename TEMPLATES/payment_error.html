@@ -1,0 +1,14 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payment Failed</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <h1>Payment Failed 😞</h1>
+    <p>{{ error }}</p>
+    <a href="{% url 'checkout' %}"><button>Try Again</button></a>
+  </body>
+</html>

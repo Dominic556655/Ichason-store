@@ -1,0 +1,77 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICHASON SOCKS</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script src="{% static 'js/main.js' %}" defer></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header tabindex="0">
+      <article class="main_article">
+        <h2 class="h2">F.C.T Abuja</h2>
+        <address class="address">
+          <a href="https://maps.app.goo.gl/VmZZdJzbJLHQYM5H9">
+            No6 gaeron Crescent Dawaki</a
+          >
+        </address>
+        {% if user.is_authenticated %}
+        <h1 class="mine"><strong>Hello, {{ user.username }}</strong></h1>
+        {% endif %}
+
+        <img
+          class="img__1"
+          src="/media/products/Screenshot 2026-02-27 105049.png"
+          alt="favicon"
+          width="100"
+          height="100"
+        />
+
+        <section class="header-title-line">
+          <button class="menu-button"></button>
+          <div class="menu-icon"></div>
+        </section>
+      </article>
+      <nav>
+        {% if user.is_authenticated %}
+        <ul class="list">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'shop' %}">Shop</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+
+          <li>
+            <a>
+              <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button class="button_class" type="submit">Logout</button>
+              </form></a
+            >
+          </li>
+          {% else %}
+          <li><a href=""></a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <main>
+      <h1>Payment Successful 🎉</h1>
+
+      <p>Order ID: {{ order.id }}</p>
+
+      <a href="{% url 'shop' %}"><strong>Continue Shopping</strong></a>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p class="kick">
+        &copy; <time id="year"></time> ICHASON Store. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABOUT PAGE</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script src="{% static 'js/main.js' %}" defer></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header>
+      <article class="main_article">
+        <h2 class="h2">F.C.T Abuja</h2>
+        <address class="address">
+          <a href="https://maps.app.goo.gl/VmZZdJzbJLHQYM5H9">
+            No6 gaeron Crescent Dawaki</a
+          >
+        </address>
+        {% if user.is_authenticated %}
+        <h1 class="mine"><strong>Hello, {{ user.username }}</strong></h1>
+        {% endif %}
+
+        <img
+          class="img__1"
+          src="/media/products/Screenshot 2026-02-27 105049.png"
+          alt="favicon"
+          width="100"
+          height="100"
+        />
+
+        <section class="header-title-line">
+          <button class="menu-button"></button>
+          <div class="menu-icon"></div>
+        </section>
+      </article>
+      <nav>
+        <ul class="list">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'shop' %}">Shop</a></li>
+          <li><a href="{% url 'cart' %}">Cart</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+
+          {% if user.is_authenticated %}
+
+          <li>
+            <a>
+              <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+              </form></a
+            >
+          </li>
+
+          {% else %}
+
+          <li><a href="{% url 'login' %}">Login</a></li>
+
+          <li><a href="{% url 'register' %}">Register</a></li>
+
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <main>
+      <h1><strong>ABOUT OUR PRODUCTS</strong></h1>
+      <div class="product-card about-main">
+        <h3><strong>Welcome to ICHASON_SOCKS!</strong></h3>
+        <br />
+        <p class="styled">
+          At ICHASON_SOCKS, we believe that style starts from the ground up. It
+          was Founded by Dominic Icha, ICHASON_SOCKS started with a simple idea
+          — to make socks that combine style and comfort for everyone, our
+          mission is to provide high-quality, comfortable, and stylish socks
+          that elevate everyday life. Whether you’re at work, at home, or on the
+          go, our products are designed to bring a pop of personality and
+          comfort to your day. We pride ourselves on:
+          <li class="unordered">
+            <strong> Quality Materials:</strong> Soft, durable fabrics that
+            last.
+          </li>
+          <li class="unordered">
+            <strong>Unique Designs:</strong> Stand out with colors, patterns,
+            and styles you won’t find anywhere else.
+          </li>
+          <li class="unordered">
+            <strong>Customer First:</strong> Fast shipping, responsive support,
+            and satisfaction guaranteed.
+          </li>
+        </p>
+        <br />
+        <p class="styled">
+          <span class="offscreen"
+            >From casual wear to statement pieces, ICHASON_SOCKS is more than
+            just socks — it’s a reflection of your style and personality. Thank
+            you for supporting our journey to bring comfort, creativity, and
+            quality to every step you take. Join our community and step up your
+            sock game to</span
+          >
+        </p>
+      </div>
+
+      <div class="product-card about-main">
+        <h3>
+          <strong>From humble beginnings to happy feet everywhere</strong>
+        </h3>
+        <p class="styled">
+          From our humble beginnings to becoming a trusted name in socks, our
+          journey has always been about crafting quality products that bring joy
+          to your every step.
+        </p>
+        <img class="about-img" src="/media/products/about img.avif" alt="" />
+
+        <section>
+          <aside class="mission content content2">
+            Our mission is simple:
+            <strong>
+              to provide the perfect blend of comfort, quality, and style in
+              every pair of socks we create.</strong
+            >
+          </aside>
+
+          <p class="content2">
+            <img
+              class="about-img2"
+              src="/media/products/about img 2.avif"
+              alt=""
+            />
+          </p>
+        </section>
+
+        <section>
+          <p class="shipping">
+            <img src="/media/products/about-icon1.svg" alt="" /><br />
+            <strong>Free shipping </strong><br />Enjoy fast delivery with no
+            additional charges.
+          </p>
+
+          <p class="shipping">
+            <img src="/media/products/about icon2.svg" alt="" /><br />
+            <strong>Easy refund </strong><br />Simple and stress-free returns
+            for your convenience.
+          </p>
+          <p class="shipping">
+            <img src="/media/products/about icon3.svg" alt="" /><br />
+            <strong>Online support</strong><br />Get assistance anytime with our
+            24/7 support team.
+          </p>
+          <p class="shipping">
+            <img src="/media/products/about icon4.svg" alt="" /><br />
+            <strong>Online support</strong><br />Choose a payment method that
+            works best for you.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p class="kick">
+        &copy; <time id="year"></time> ICHASON Store. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

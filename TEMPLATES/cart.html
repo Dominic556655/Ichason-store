@@ -1,0 +1,139 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICHASON SOCKS</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script src="{% static 'js/main.js' %}" defer></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header tabindex="0">
+      <article class="main_article">
+        <h2 class="h2">F.C.T Abuja</h2>
+        <address class="address">
+          <a href="https://maps.app.goo.gl/VmZZdJzbJLHQYM5H9">
+            No6 gaeron Crescent Dawaki</a
+          >
+        </address>
+        {% if user.is_authenticated %}
+        <h1 class="mine"><strong>Hello, {{ user.username }}</strong></h1>
+        {% endif %}
+
+        <img
+          class="img__1"
+          src="/media/products/Screenshot 2026-02-27 105049.png"
+          alt="favicon"
+          width="100"
+          height="100"
+        />
+
+        <section class="header-title-line">
+          <button class="menu-button"></button>
+          <div class="menu-icon"></div>
+        </section>
+      </article>
+      <nav>
+        {% if user.is_authenticated %}
+        <ul class="list">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'shop' %}">Shop</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+
+          <li>
+            <a>
+              <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button class="button_class" type="submit">Logout</button>
+              </form></a
+            >
+          </li>
+          {% else %}
+          <li><a href=""></a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <main>
+      <h1>🛒Your CART</h1>
+      <div class="product-grid">
+        {% if products %} {% for product in products %}
+        <div class="cart_card">
+          <img
+            class="product-img"
+            src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+            width="300"
+            height="300"
+          />
+
+          {% for item in order.items.all %}
+          <tr>
+            <td>{{ item.product.name }}</td>
+            <td>
+              <form
+                method="POST"
+                action="{% url 'update_cart_quantity' item.id %}"
+              >
+                {% csrf_token %}
+                <button type="submit" name="action" value="decrease">–</button>
+                <input
+                  type="text"
+                  value="{{ item.quantity }}"
+                  readonly
+                  size="2"
+                />
+                <button type="submit" name="action" value="increase">+</button>
+              </form>
+            </td>
+            <td>${{ item.subtotal }}</td>
+          </tr>
+          {% endfor %}
+
+          <h3>{{ product.name }}</h3>
+          <p class="span">Price: ${{ product.price }}</p>
+          <p class="span">Quantity: {{ product.quantity }}</p>
+          <p class="span">Subtotal: ${{ product.subtotal }}</p>
+
+          <a href="{% url 'remove_from_cart' product.id %}">
+            <strong>Remove </strong></a
+          >
+        </div>
+
+        {% endfor %}
+      </div>
+
+      <h2>Total: ${{ total }}</h2>
+
+      {% else %}
+
+      <p>Your cart is empty</p>
+
+      {% endif %}
+
+      <!-- CHECKOUT START -->
+
+      {% if products %}
+
+      <a href="{% url 'checkout' %}">
+        <button class="checkout-container">
+          <strong>Proceed to Checkout</strong>
+        </button>
+      </a>
+      {% endif %}
+      <!-- CHECKOUT END -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p class="kick">
+        &copy; <time id="year"></time> ICHASON Store. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

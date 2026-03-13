@@ -1,0 +1,515 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICHASON SOCKS</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script src="{% static 'js/main.js' %}" defer></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->{% if user.is_authenticated %}
+    <header>
+      <article class="main_article">
+        <h2 class="h2">F.C.T Abuja</h2>
+        <address class="address">
+          <a href="https://maps.app.goo.gl/VmZZdJzbJLHQYM5H9">
+            No6 gaeron Crescent Dawaki</a
+          >
+        </address>
+        {% if user.is_authenticated %}
+        <h1 class="mine"><strong>Hello, {{ user.username }}</strong></h1>
+        {% endif %}
+
+        <img
+          class="img__1"
+          src="/media/products/Screenshot 2026-02-27 105049.png"
+          alt="favicon"
+          width="100"
+          height="100"
+        />
+
+        <section class="header-title-line">
+          <button class="menu-button"></button>
+          <div class="menu-icon"></div>
+        </section>
+      </article>
+      <nav>
+        <ul class="list">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'shop' %}">Shop</a></li>
+          <li><a href="{% url 'cart' %}">Cart</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+
+          <li>
+            <a>
+              <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button class="button_class" type="submit">Logout</button>
+              </form></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <main>
+      <h1 class="w__1">Welcome to ICHASON Store</h1>
+
+      <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card">
+          <img
+            class="product-img"
+            src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+            width="100%"
+            height="300"
+          />
+          <h3>{{ product.name }}</h3>
+          <p class="span"><strong>${{ product.price }}</strong></p>
+          <a href="{% url 'product_detail' product.id %}"
+            ><strong>View</strong></a
+          >
+        </div>
+        {% endfor %}
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p class="kick">
+        &copy; <time id="year"></time> ICHASON Store. All rights reserved.
+      </p>
+    </footer>
+    {% else %}
+
+    <!-- FOR THE NON AUTHENTICTED USERS -->
+
+    <header>
+      <article class="main_article">
+        <h2 class="h2_none">ICHASON SOCKS</h2>
+        <address class="address">
+          <a href="https://maps.app.goo.gl/VmZZdJzbJLHQYM5H9">
+            No6 gaeron Crescent Dawaki</a
+          >
+        </address>
+        <img
+          class="imaged1"
+          src="/media/products/Screenshot 2026-02-27 105049.png"
+          alt="favicon"
+          width="100"
+          height="100"
+        />
+        <div class="authenticate__1">
+          <a class="authenticate" href="{% url 'login' %}"
+            ><strong>Login</strong></a
+          >
+
+          <a class="authenticate" href="{% url 'register' %}"
+            ><strong>Register</strong></a
+          >
+        </div>
+      </article>
+    </header>
+    {% endif %}
+  </body>
+
+  {% if user.is_authenticated %} {% else %}
+  <body>
+    <div class="general_container">
+      <div class="container__authenticate hidden">
+        <h2><strong>Step in and meet your new favorite socks!</strong></h2>
+        <p>
+          Find the perfect blend of comfort, style, and quality in our premium
+          sock collections. <br />
+          <a href="{% url 'login' %}"><br /><span>SHOP NOW</span> </a>
+        </p>
+        <img
+          src="/media/products/home-page-hero-image-01.avif"
+          alt=""
+          class="home-img"
+          width="500"
+          height="500"
+        />
+      </div>
+
+      <div class="cont_auth hidden">
+        <div class="home-imgg-text">
+          <a href=""
+            ><img
+              class="home-imgg"
+              src="/media/products/category-01.avif"
+              alt="" /></a
+          >No Show
+        </div>
+        <div class="home-imgg-text">
+          <a href=""
+            ><img
+              class="home-imgg"
+              src="/media/products/category-02.avif"
+              alt="" /></a
+          >Ankle
+        </div>
+        <div class="home-imgg-text">
+          <a href=""
+            ><img
+              class="home-imgg"
+              src="/media/products/category-03.avif"
+              alt="" /></a
+          >Crew
+        </div>
+        <div class="home-imgg-text">
+          <a href="">
+            <img
+              class="home-imgg"
+              src="/media/products/category-04.avif"
+              alt="" /></a
+          >Quarter
+        </div>
+        <div class="home-imgg-text">
+          <a href=""
+            ><img
+              class="home-imgg"
+              src="/media/products/category-05.avif"
+              alt="" /></a
+          >Knee High
+        </div>
+        <div class="home-imgg-text">
+          <a href=""
+            ><img
+              class="home-imgg"
+              src="/media/products/category-06.avif"
+              alt="" /></a
+          >Kids
+        </div>
+      </div>
+      <div>
+        <h1 class="h1_none hidden">Trending products</h1>
+        <div class="spade hidden">
+          <div class="animate">
+            <img
+              src="/media/products/home-page image 02.avif"
+              alt=""
+              class="home-image"
+            /><br />
+            <strong
+              >Athletic Sport Sock<br />
+              $ 18.49 USD <br />
+              <a href="{% url 'login' %}"> <span> SHOP NOW</span></a></strong
+            >
+          </div>
+          <div class="animate">
+            <img
+              src="/media/products/home-page-image 03.avif"
+              alt=""
+              class="home-image"
+            /><br /><strong
+              >Anti-Slip Grip Sock <br />$ 20.49 USD <br /><a
+                href="{% url 'login' %}"
+                ><span>SHOP NOW </span></a
+              >
+            </strong>
+          </div>
+          <div class="animate">
+            <h6>-18%</h6>
+            <img
+              src="/media/products/home-page-image04.avif"
+              alt=""
+              class="home-image"
+            /><br /><strong
+              >Luxe step doted(Pack of 3)<br />$ 34.99 USD <br /><a href=""
+                ><span>SHOP NOW </span></a
+              >
+            </strong>
+          </div>
+        </div>
+      </div>
+      <img
+        src="/media/products/screenshot 101.png"
+        alt=""
+        class="screenshot101 hidden"
+      />
+      <div class="spader hidden">
+        <div class="animate">
+          <img src="/media/products/pr-01.avif" alt="" class="home-image1" />
+        </div>
+        <div class="animate">
+          <img src="/media/products/pr-02.avif" alt="" class="home-image1" />
+        </div>
+        <div class="animate">
+          <img
+            src="/media/products/674ffaa68952b35dafa7cd5f_testimonial-05.avif"
+            alt=""
+            class="home-image1"
+          />
+        </div>
+        <div class="animate">
+          <img
+            src="/media/products/675444cd6ca2ad36bd73542f_pr-04.avif"
+            alt=""
+            class="home-image1"
+          />
+        </div>
+      </div>
+      <h1 class="h1_none1 hidden">
+        <a href="{% url 'login' %}">VIEW ALL PRODUCTS</a>
+      </h1>
+
+      <h1 class="hidden">
+        <strong>Why our socks are a step above the rest</strong>
+      </h1>
+      <br />
+      <a href="{% url 'login' %}"
+        ><h1 class="hidden"><span>SHOP NOW</span></h1></a
+      >
+
+      <section class="section1 hidden">
+        <p class="shipping">
+          <img src="/media/products/premium 1.svg" alt="" /><br /><strong
+            >Premium cotton</strong
+          >
+          <br />Ultra-soft and breathable for daily wear.
+        </p>
+
+        <p class="shipping">
+          <img src="/media/products/premium 2.svg" alt="" /><br /><strong
+            >Anti-bacteria</strong
+          >
+          <br />Keeps feet fresh by preventing bacterial growth.
+        </p>
+
+        <p class="shipping">
+          <img src="/media/products/premium 3.svg" alt="" /><br /><strong
+            >Seamless toe</strong
+          >
+          <br />Eliminates friction and irritation for a smooth feel.
+        </p>
+
+        <p class="shipping">
+          <img src="/media/products/premium 4.svg" alt="" /><br /><strong
+            >Mesh elastic</strong
+          >
+          <br />Enhances breathability for active use.
+        </p>
+      </section>
+      <div>
+        <img
+          src="/media/products/674ff7a9be497dbeef098506_instagram-05.avif"
+          alt=""
+          class="hero-hero hidden"
+        />
+        <div class="hero-hero-text hidden">
+          <p>Warm up this winter with exclusive deals on cozy socks!</p>
+
+          <h1>Flat 25% of on all Winter Socks</h1>
+          <br />
+          <h5>Stock up on your Winter must-haves!</h5>
+          <br />
+          <a href="{% url 'login' %}"><span>SHOP COZY DEALS TODAY</span></a>
+        </div>
+      </div>
+
+      <h2 class="Customer-voice-text hidden">
+        <strong>Voice of our valued customers</strong>
+      </h2>
+
+      <div class="properties1 hidden">
+        <div class="properties hidden">
+          <div class="properties-card">
+            <img
+              src="/media/products/674fec91418f54ebd2507765_testimonial-01.avif"
+              alt=""
+              class="properties-img"
+            />
+            <p>
+              Sock Store has socks for every occasion! From cozy winter wool to
+              lightweight summer cotton, they’ve got it all. Plus, the designs
+              are so fun! <br /><br />
+              <strong>Larry Lawson</strong>
+            </p>
+          </div>
+        </div>
+        <div class="properties hidden">
+          <div class="properties-card">
+            <img
+              src="/media/products/674fec91c927df093860a1de_testimonial-02.avif"
+              alt=""
+              class="properties-img"
+            />
+
+            <p>
+              I bought the winter collection, and they’re a game-changer! My
+              feet stay warm even in freezing temperatures, and they’re so
+              comfortable. Highly recommend! <br /><br />
+              <strong>Emily T., Colorado</strong>
+            </p>
+          </div>
+        </div>
+        <div class="properties hidden">
+          <div class="properties-card">
+            <img
+              src="/media/products/674fec912ea8a7e01fa888ab_testimonial-03.avif"
+              alt=""
+              class="properties-img"
+            />
+            <p>
+              The holiday gift sets are amazing! Everyone in my family loved
+              their socks, and the packaging was so thoughtful.
+              <br /><br />
+              <strong>Bryan Knight</strong>
+            </p>
+          </div>
+        </div>
+        <div class="properties hidden">
+          <div class="properties-card">
+            <img
+              src="/media/products/674fec92374d122c441e816c_testimonial-04.avif"
+              alt=""
+              class="properties-img"
+            />
+            <p>
+              These socks exceeded my expectations! The quality is excellent,
+              they fit perfectly, and they stay comfortable all day. I’ve washed
+              them several times and they still look brand new. Definitely my
+              go-to socks now. Highly recommended!
+              <br /><br />
+              <strong> Michael R.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="subscribe-section hidden">
+        <h2><strong>Join Our Sock Club 🧦</strong></h2>
+        <br />
+        <strong
+          >Subscribe to get exclusive offers, new arrivals, and cozy
+          deals.</strong
+        >
+        <br /><br />
+        <form method="POST">
+          {% csrf_token %}
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+          />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <h3>Follow Us</h3>
+      <h2>@ICHASON-SOCKS</h2>
+      <div class="properties1 hidden">
+        <div>
+          <img
+            src="/media/products/category-04.avif"
+            alt=""
+            class="properties-img1"
+          />
+        </div>
+        <div>
+          <img
+            src="/media/products/674ff7a92edcc90f7594979e_instagram-03.avif"
+            alt=""
+            class="properties-img1"
+          />
+        </div>
+        <div>
+          <img
+            src="/media/products/category-05.avif"
+            alt=""
+            class="properties-img1"
+          />
+        </div>
+        <div>
+          <img
+            src="/media/products/674ff7a9032c36ceea7f933f_instagram-02.avif"
+            alt=""
+            class="properties-img1"
+          />
+        </div>
+      </div>
+
+      <div class="site-footer hidden">
+        <div>
+          <img
+            src="/media/products/category-021.png"
+            alt=""
+            class="properties-img2"
+          />
+          <img
+            src="/media/products/674ed260788b04bf584f77cc_sock-store.svg"
+            alt=""
+            class="footer-contact"
+          />
+        </div>
+        <div class="footer-grid">
+          <div class="footer-pages">
+            <br />
+            <br />
+            <strong>Contact:</strong><br />
+            ichadominic5@gmail.com <br />
+            <br />
+
+            <strong>Pages</strong><br /><br />
+            <a href="login">Home</a><br />
+            <a href="login">Shop</a><br />
+            <a href="login">About</a><br />
+            <a href="#">FAQs</a>
+          </div>
+
+          <div class="footer-legal">
+            <strong>Contact</strong> <br />
+            <a href="">Privacy Policy</a>
+          </div>
+
+          <div class="footer-social">
+            <h2>Join our community</h2>
+
+            <img src="/media/products/instagram-icon.svg" alt="Instagram" />
+            <img src="/media/products/facebook-icon.svg" alt="Facebook" />
+            <img src="/media/products/youtube-icon.svg" alt="YouTube" />
+          </div>
+
+          <div class="footer-utility">
+            <h2>Utility</h2>
+            <br />
+            <a href=""> Style Guide</a><br />
+            <a href="">Instruction</a><br />
+            <a href="">Licenses</a><br />
+            <a href="">Changelog</a>
+          </div>
+
+          <div class="footer-coming">
+            <h2>Coming Soon</h2>
+            <br />
+
+            <a href="">Link in Bio</a><br />
+            <a href="">Password Protected</a><br />
+            <a href="">Error 404</a>
+          </div>
+        </div>
+      </div>
+      <!-- this helps to show once a user scrolls -->
+      <script>
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        });
+
+        document.querySelectorAll(".hidden").forEach((el) => {
+          observer.observe(el);
+        });
+      </script>
+    </div>
+
+    {% endif %}
+  </body>
+</html>

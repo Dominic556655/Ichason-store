@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2><strong>Create Account</strong></h2>
+      <img class="register_img" src="/media/products/Adobe.png" alt="" />
+
+      <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+
+        <button type="submit"><strong>Register</strong></button>
+      </form>
+
+      <a href="{% url 'login' %}">Login</a>
+      <a href="">Sign-in with google</a>
+    </div>
+
+    <footer>
+      <p class="kick">
+        &copy; <time id="year"></time> ICHASON Store. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
