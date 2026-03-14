@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # config = Config(RepositoryEnv(BASE_DIR / ".env"))
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-q#*ec$1wu*ql#8put5he%4j7pd7*x@o_d4#$coei+s39gw^=^5")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

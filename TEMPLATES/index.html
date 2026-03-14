@@ -122,14 +122,15 @@
   <body>
     <div class="general_container">
       <div class="container__authenticate hidden">
-        <h2><strong>Step in and meet your new favorite socks!</strong></h2>
-        <p>
+        <h2 class="Customer-voice-text">
+          <strong>Step in and meet your new favorite socks!</strong>
+        </h2>
+        <h3>
           Find the perfect blend of comfort, style, and quality in our premium
-          sock collections. <br />
-          <a href="{% url 'login' %}"><br /><span>SHOP NOW</span> </a>
-        </p>
+          sock collections. <br /><br />
+        </h3>
         <img
-          src="/media/products/home-page-hero-image-01.avif"
+          src="/media/products/home-page-hero-image-001.png"
           alt=""
           class="home-img"
           width="500"
@@ -259,7 +260,7 @@
         <a href="{% url 'login' %}">VIEW ALL PRODUCTS</a>
       </h1>
 
-      <h1 class="hidden">
+      <h1 class="Customer-voice-text hidden">
         <strong>Why our socks are a step above the rest</strong>
       </h1>
       <br />
@@ -304,11 +305,12 @@
         />
         <div class="hero-hero-text hidden">
           <p>Warm up this winter with exclusive deals on cozy socks!</p>
+          <br />
 
           <h1>Flat 25% of on all Winter Socks</h1>
-          <br />
+          <br /><br />
           <h5>Stock up on your Winter must-haves!</h5>
-          <br />
+          <br /><br />
           <a href="{% url 'login' %}"><span>SHOP COZY DEALS TODAY</span></a>
         </div>
       </div>
@@ -381,29 +383,26 @@
             </p>
           </div>
         </div>
+        <div class="properties hidden">
+          <div class="properties-card">
+            <img
+              src="/media/products/674fec92374d122c441e816c_testimonial-04.avif"
+              alt=""
+              class="properties-img"
+            />
+            <p>
+              These socks exceeded my expectations! The quality is excellent,
+              they fit perfectly, and they stay comfortable all day. Highly
+              recommended!
+              <br /><br />
+              <strong> Michael R.</strong>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="subscribe-section hidden">
-        <h2><strong>Join Our Sock Club 🧦</strong></h2>
-        <br />
-        <strong
-          >Subscribe to get exclusive offers, new arrivals, and cozy
-          deals.</strong
-        >
-        <br /><br />
-        <form method="POST">
-          {% csrf_token %}
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email address"
-            required
-          />
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
-      <h3>Follow Us</h3>
-      <h2>@ICHASON-SOCKS</h2>
-      <div class="properties1 hidden">
+      <h3 class="bold">Follow Us</h3>
+      <h2 class="bold">@ICHASON-SOCKS</h2>
+      <div class="properties2 hidden">
         <div>
           <img
             src="/media/products/category-04.avif"
@@ -433,67 +432,26 @@
           />
         </div>
       </div>
-
-      <div class="site-footer hidden">
-        <div>
-          <img
-            src="/media/products/category-021.png"
-            alt=""
-            class="properties-img2"
+      <div class="subscribe-section hidden">
+        <h2><strong>Join Our Sock Club 🧦</strong></h2>
+        <br />
+        <strong
+          >Subscribe to get exclusive offers, new arrivals, and cozy
+          deals.</strong
+        >
+        <br /><br />
+        <form method="POST">
+          {% csrf_token %}
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
           />
-          <img
-            src="/media/products/674ed260788b04bf584f77cc_sock-store.svg"
-            alt=""
-            class="footer-contact"
-          />
-        </div>
-        <div class="footer-grid">
-          <div class="footer-pages">
-            <br />
-            <br />
-            <strong>Contact:</strong><br />
-            ichadominic5@gmail.com <br />
-            <br />
-
-            <strong>Pages</strong><br /><br />
-            <a href="login">Home</a><br />
-            <a href="login">Shop</a><br />
-            <a href="login">About</a><br />
-            <a href="#">FAQs</a>
-          </div>
-
-          <div class="footer-legal">
-            <strong>Contact</strong> <br />
-            <a href="">Privacy Policy</a>
-          </div>
-
-          <div class="footer-social">
-            <h2>Join our community</h2>
-
-            <img src="/media/products/instagram-icon.svg" alt="Instagram" />
-            <img src="/media/products/facebook-icon.svg" alt="Facebook" />
-            <img src="/media/products/youtube-icon.svg" alt="YouTube" />
-          </div>
-
-          <div class="footer-utility">
-            <h2>Utility</h2>
-            <br />
-            <a href=""> Style Guide</a><br />
-            <a href="">Instruction</a><br />
-            <a href="">Licenses</a><br />
-            <a href="">Changelog</a>
-          </div>
-
-          <div class="footer-coming">
-            <h2>Coming Soon</h2>
-            <br />
-
-            <a href="">Link in Bio</a><br />
-            <a href="">Password Protected</a><br />
-            <a href="">Error 404</a>
-          </div>
-        </div>
+          <button type="submit">Subscribe</button>
+        </form>
       </div>
+
       <!-- this helps to show once a user scrolls -->
       <script>
         const observer = new IntersectionObserver((entries) => {
