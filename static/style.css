@@ -1076,6 +1076,7 @@ section{
     border-radius: 500px;
     box-shadow: 0 6px 5px -5px black;
 }
+
 .home-image{
     width: 300px;
     height: auto;
@@ -1485,6 +1486,7 @@ h6{
     grid-template-columns: repeat(3,minmax(100px, 1fr));
     gap: 4px;
     width: 100%;
+    padding: 1.7rem;
 }
 .home-image{
     width: 80%;
