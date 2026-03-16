@@ -22,8 +22,9 @@ from store import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ICHASON_PROJ', include('store.urls')),
+    path('ICHASON_PROJ/', include('store.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/", include("allauth.urls")),
     path("verify-payment/",views.verify_payment, name="verify_payment"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,5 @@
-{% load static %}
+{% load static %} {% load socialaccount %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,17 +10,26 @@
   </head>
   <body>
     <div class="container">
-      <h2><strong>Create Account</strong></h2>
+      <h2 class="item"><strong>Create Account</strong></h2>
       <img class="register_img" src="/media/products/Adobe.png" alt="" />
 
       <form method="POST">
         {% csrf_token %} {{ form.as_p }}
 
-        <button type="submit"><strong>Register</strong></button>
+        <button class="button_class" type="submit">
+          <strong>Register</strong>
+        </button>
       </form>
 
-      <a href="{% url 'login' %}">Login</a>
-      <a href="">Sign-in with google</a>
+      <p><strong>Already have an account?</strong></p>
+      <p>
+        <a class="button_class" href="{% url 'login' %}">Login</a> <br /><br />
+        <a
+          class="button_class nowrap"
+          href="{% provider_login_url 'google' process='login' %}"
+          >Sign-in with google</a
+        >
+      </p>
     </div>
 
     <footer>

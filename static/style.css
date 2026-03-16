@@ -231,72 +231,6 @@ li, a:active{
 
 
 
-    /* LOGIN CSS */
-
-.register_img{
-    position: absolute;
-    top: 0;
-    margin-top: 4rem;
-    margin-left: -14rem;
-}
-
-.input-box{
-    width: 100%;
-    max-width: 300px;
-    height: 30px;
-    font-size: 18px;
-    padding: 5px 10px;
-    margin-bottom: 20pxpx;
-}
-
-p, .item{
-    text-align: center;
-    color: black;
-    margin: 40px;
-}
-
-p{
-    text-align: center;
-    color: #000;
-   
-}
-
-.kick{
-    margin: 1px;
-    color: #fff;
-}
-
-.item{
-    color: #000;
-    text-align: center;
-    margin-top: 2rem;
-}
-.button__class{
-    text-align: center;
-    text-shadow: 2px 2px 5px rgb(3, 3, 3);
-}
-
-.button_class{
-    margin-top: -10px;
-    margin-bottom: 10px;
-    padding: 0.5rem 1rem ;
-   align-self: center;
-   font-weight: bold;
-   box-shadow: 0 6px 5px -5px black;
-}
-
-.container{
-    background:#fff;
-    border: 1px solid #2b2929;
-    box-shadow: 0 6px 5px -5px black;
-    padding: 4rem;
-    align-self: center;
-    text-align: center;
-    margin-top: 3rem;
-    width: 50%;
-    height: auto;
-}
-
 .checkout-container {
     position: relative;
     bottom: 0;
@@ -389,14 +323,14 @@ h1{
 }
 .container{
     background:#fff;
-    color: #000;
     border: 1px solid #2b2929;
     box-shadow: 0 6px 5px -5px black;
-    padding: 3rem;
+    padding: 5rem;
     align-self: center;
     text-align: center;
     margin-top: 3rem;
-    width: 400px;
+    margin-bottom: 1.5rem;
+    width: 100%;
     height: auto;
 }
         /* || ABOUT PAGE */
@@ -450,6 +384,75 @@ section{
     border: 1px solid #ccc;
 }
 
+    /* LOGIN CSS */
+
+.register_img{
+    position: absolute;
+    top: 0;
+    margin-top: 4rem;
+    margin-left: -11.7rem;
+}
+
+
+.container input{
+    width: 100%;
+    max-width: 300px;
+    height: 25px;
+    font-size: 18px;
+    padding: 5px 10px;
+    margin-bottom: 7px;
+}
+
+p, .item{
+    text-align: center;
+    color: black;
+    margin: 20px;
+}
+
+p{
+    text-align: center;
+    color: #000;
+   font-size: 20px;
+}
+
+.kick{
+    margin: 1px;
+    color: #fff;
+}
+
+.item{
+    color: #000;
+    text-align: center;
+    margin-top: 2rem;
+}
+.button__class{
+    text-align: center;
+    color: #000;
+}
+
+.button_class{
+    margin-top: -10px;
+    margin-bottom: 10px;
+    padding: 0.5rem 1rem ;
+   align-self: center;
+   font-weight: bold;
+   box-shadow: 0 6px 5px -5px black;
+   white-space: nowrap;
+}
+
+.container{
+    background:#fff;
+    border: 1px solid #2b2929;
+    box-shadow: 0 6px 5px -5px black;
+    padding: 5rem;
+    align-self: center;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 4.5rem;
+    width: 100%;
+    height: auto;
+} 
+    /* end of login */
 
    /* || CONTACT US PAGE */
 
@@ -729,7 +732,22 @@ nav a:focus{
     
 }
 
+        /* || MEDIA QUERY */
 
+@media screen and (min-width: 390px){
+    .container{
+    background:#fff;
+    border: 1px solid #2b2929;
+    box-shadow: 0 6px 5px -5px black;
+    padding: 5rem;
+    align-self: center;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 15rem;
+    width: 100%;
+    height: auto;
+} 
+}
 
 
 /* || SMALL */ 
@@ -957,6 +975,8 @@ section{
     margin-top: 1rem;
 }
 
+
+
 }
 /* || MEDIUM */ 
 @media screen and (min-width: 768px){
@@ -983,6 +1003,80 @@ section{
 .submit{
     font-size: large;
 }
+    /* LOGIN CSS */
+
+.register_img{
+    position: absolute;
+    top: 0;
+    width: 15%;
+    height: auto;
+    margin-top: 6rem;
+    margin-left: -20rem;
+}
+
+.container input{
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+p, .item{
+    text-align: center;
+    color: black;
+    margin: 50px;
+    
+}
+
+p{
+    text-align: center;
+    color: #000;
+   font-size: 2rem;
+   white-space: nowrap;
+}
+
+.kick{
+    margin: 1px;
+    color: #fff;
+}
+
+.item{
+    color: #000;
+    text-align: center;
+    margin-top: 2rem;
+}
+.button__class{
+    text-align: center;
+    color: #000;
+}
+
+.button_class{
+    margin-top: -10px;
+    margin-bottom: 10px;
+    padding: 1rem 2rem ;
+   align-self: center;
+   font-weight: bold;
+   font-size: 20px;
+   box-shadow: 0 6px 5px -5px black;
+}
+
+.container{
+    background:#fff;
+    border: 1px solid #2b2929;
+    box-shadow: 0 6px 5px -5px black;
+    padding: 5rem;
+    align-self: center;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 10.5rem;
+    width: 100%;
+    height: auto;
+} 
+
+/* end of login */
+
 .container__authenticate{
     background:#fff;
     border: 1px solid #2b2929;
@@ -1175,6 +1269,93 @@ section{
     width: 50rem;
     height: auto;
 }
+
+    /* LOGIN CSS */
+
+.register_img{
+    position: absolute;
+    top: 0;
+    width: 10%;
+    height: auto;
+    margin-top: 2rem;
+    margin-left: -15rem;
+}
+.register_img{
+    position: absolute;
+    top: 0;
+    width: 10%;
+    height: auto;
+    margin-top: 2rem;
+    margin-left: -18rem;
+}
+
+.container input{
+    width: 100%;
+    max-width: 200px;
+    height: 30px;
+    font-size: 10px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+p, .item{
+    text-align: center;
+    color: black;
+    margin: 30px;
+    font-size: 2rem;
+    
+}
+
+p{
+    text-align: center;
+    color: #000;
+   font-size: 1rem;
+   white-space: nowrap;
+}
+
+.kick{
+    margin: 1px;
+    color: #fff;
+}
+
+.item{
+    color: #000;
+    text-align: center;
+    margin-top: 2rem;
+}
+.button__class{
+    text-align: center;
+    color: #000;
+}
+
+.button_class{
+    margin-top: -10px;
+    margin-bottom: 10px;
+    padding: 0.5rem 2rem ;
+   align-self: center;
+   font-weight: bold;
+   font-size: 15px;
+   box-shadow: 0 6px 5px -5px black;
+}
+
+.container{
+    background:#fff;
+    border: 1px solid #2b2929;
+    box-shadow: 0 6px 5px -5px black;
+    padding: 5rem;
+    align-self: center;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    width: 50%;
+    height: auto;
+} 
+
+/* end of login */
+
+
+
+
 
 }
 /* || XL */ 
@@ -1615,6 +1796,84 @@ h6{
     text-align: center;
     font-size: 5rem;
 }
+
+
+    /* LOGIN CSS */
+
+.register_img{
+    position: absolute;
+    top: 0;
+    width: 10%;
+    height: auto;
+    margin-top: 4rem;
+    margin-left: -40rem;
+}
+
+
+.container input{
+    width: 100%;
+    max-width: 500px;
+    height: 50px;
+    font-size: 30px;
+    padding: 13px 50px;
+    margin-bottom: 10px;
+}
+
+p, .item{
+    text-align: center;
+    color: black;
+    margin: 3rem;
+    font-size: 3rem;
+    
+}
+
+p{
+    text-align: center;
+    color: #000;
+   font-size: 2rem;
+   white-space: nowrap;
+}
+
+.kick{
+    margin: 1px;
+    color: #fff;
+}
+
+.item{
+    color: #000;
+    text-align: center;
+    margin-top: 1rem;
+}
+.button__class{
+    text-align: center;
+    color: #000;
+}
+
+.button_class{
+    margin-top: -10px;
+    margin-bottom: 1px;
+    padding: 0.5rem 3rem ;
+   align-self: center;
+   font-size: 2rem;
+
+}
+
+.container{
+    background:#fff;
+    border: 1px solid #2b2929;
+    box-shadow: 0 6px 5px -5px black;
+    padding: 5rem;
+    align-self: center;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+    width: 70%;
+    height: auto;
+} 
+
+/* end of login */
+
+
 
 }
 /* || MOBILE DEVICE LANDSCAPE  */ 

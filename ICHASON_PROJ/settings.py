@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,ichason-proj.onrender.com").split(",")
 
-
+SOCIALACCOUNT_LOGIN_ON_GET=True
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,11 +43,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'django_extensions',
+    #sign in with google
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    
 ]
 
+#end
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware', 
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
