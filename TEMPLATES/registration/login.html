@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load socialaccount %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,6 +20,11 @@
           <strong>Login</strong>
         </button>
       </form>
+      <a
+        class="button_class nowrap"
+        href="{% provider_login_url 'google' process='login' %}"
+        >Sign-in with google</a
+      >
 
       <p>
         Don't have Ichason account?<a

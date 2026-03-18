@@ -7,11 +7,13 @@ from django.contrib.auth.decorators import login_required
 import requests
 from decimal import Decimal
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.contrib import messages
+from .utils import get_usd_to_ngn_rate
 
-# Create your views here.
+# =======================
+# VIEW PAGES
+# =======================
 
         #THE VIEW PAGE
 def home(request):
@@ -68,6 +70,10 @@ def contact(request):
     return render(request, 'contact.html')
     #   END VIEW
     
+# =======================
+# AUTH
+# =======================
+    
     # LOGIN/ AUTHENTICATION
     
 def register(request):
@@ -88,7 +94,11 @@ def register(request):
     })
     #   END AUTH
     
-    # ADDING TO CART
+# =======================
+# CART
+# =======================
+   
+   # ADDING TO CART
 def add_to_cart(request, id):
 
     cart = request.session.get("cart", {})
@@ -114,7 +124,7 @@ def cart_view(request):
 
     for product_id, quantity in cart.items():
 
-        product = Product.objects.get(id=product_id)
+        product = get_object_or_404(Product, id=product_id)
 
         product.quantity = quantity
         product.subtotal = product.price * quantity
@@ -157,6 +167,10 @@ def remove_from_cart(request, id):
 
     # END CART
     
+ # =======================
+ # CHECKOUT
+ # =======================   
+    
     # Create Checkout View
 @login_required
 def checkout(request):
@@ -170,7 +184,7 @@ def checkout(request):
     products = []
 
     for product_id, quantity in cart.items():
-        product = Product.objects.get(id=product_id)
+        product = get_object_or_404(Product, id=product_id)
         product.quantity = quantity
         product.subtotal = product.price * quantity
         total += product.subtotal
@@ -180,6 +194,10 @@ def checkout(request):
         "products": products,
         "total": total
     })
+    
+    # =======================
+    # PAYMENT (UPDATED 🔥)
+    # =======================
     
     # paystack payment
 @login_required
@@ -208,16 +226,17 @@ def initiate_payment(request):
     "Content-Type": "application/json"
 }
 
-    usd_to_naira_rate = Decimal("1500")  # use Decimal, not float
-    naira_total = total * usd_to_naira_rate
 
-    amount = int(naira_total * 100)  # convert to kobo
+    rate = get_usd_to_ngn_rate() or 1500  # fallback 
+    naira_total = total * Decimal(str(rate))
+    amount = int(naira_total * 100)  # kobo# use Decimal, not float
+    
 
     data = {
     "email": request.user.email or "test@email.com",
     "amount": amount,   # ✅ USE converted amount
     "reference": f"ORDER_{order.id}",
-    "callback_url": "http://nickdev.co.site/verify-payment/"
+    "callback_url": "http://127.0.0.1:8000/verify-payment/"
 }
 
     response = requests.post(

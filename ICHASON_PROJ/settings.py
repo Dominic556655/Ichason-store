@@ -13,7 +13,17 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # from decouple import Config, RepositoryEnv
+
+# CLOUDINARY FOR LIVE PRODUCTION
+cloudinary.config(
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.getenv('CLOUDINARY_API_KEY'),
+    api_secret=os.getenv('CLOUDINARY_API_SECRET')
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,6 +53,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'django_extensions',
+    # start 
+    'cloudinary',
+    'cloudinary_storage',
+    # end cloudinary
     #sign in with google
     'allauth',
     'allauth.account',
@@ -52,6 +66,17 @@ INSTALLED_APPS = [
 ]
 
 #end
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+                # CLOUDINARY FOR LOCAL SERVER
+                
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dx1othdcg',
+    'API_KEY': '858459572245132',
+    'API_SECRET': 'yWrXeAzqUEBdY7awvLdfcqNfOjQ',
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware', 
@@ -155,17 +180,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
+
 
 LOGIN_REDIRECT_URL = "/ICHASON_PROJ"
 LOGOUT_REDIRECT_URL = "/ICHASON_PROJ"
 LOGIN_URL = "/accounts/login/"
 
 # PAYSTACK test SECRET KEY
-PAYSTACK_SECRET_KEY = os.environ.get("PAYSTACK_SECRET_KEY_TEST")
+PAYSTACK_SECRET_KEY = os.environ.get("PAYSTACK_SECRET_KEY_TEST",)
 
 # Live
 PAYSTACK_SECRET_KEY = os.environ.get("PAYSTACK_SECRET_KEY_LIVE") 
 PAYSTACK_PUBLIC_KEY = os.environ.get("PAYSTACK_PUBLIC_KEY")
+
+EXCHANGE_API_KEY = os.environ.get("EXCHANGE_API_KEY")
 
         # For messages
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
