@@ -34,7 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # config = Config(RepositoryEnv(BASE_DIR / ".env"))
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-q#*ec$1wu*ql#8put5he%4j7pd7*x@o_d4#$coei+s39gw^=^5")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -70,12 +70,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
                 # CLOUDINARY FOR LOCAL SERVER
-                
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dx1othdcg',
-    'API_KEY': '858459572245132',
-    'API_SECRET': 'yWrXeAzqUEBdY7awvLdfcqNfOjQ',
-}
+            
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
